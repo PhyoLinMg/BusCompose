@@ -12,6 +12,7 @@ import androidx.compose.material.Divider
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
+import androidx.compose.ui.Alignment.Companion.CenterEnd
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.nativeCanvas
@@ -39,6 +40,8 @@ fun Stepper(modifier: Modifier = Modifier, numberOfSteps: Int, currentStep: Int)
                 isComplete = step < (currentStep + 1),
                 isCurrent = step == (currentStep + 1)
             )
+
+
         }
         Divider(
             color = if (currentStep == numberOfSteps) cdgDark else cdgLightGrey,
@@ -63,11 +66,19 @@ fun Step(step: Int, modifier: Modifier = Modifier, isComplete: Boolean, isCurren
         if (isComplete) selectedColor else Color.White,
         animationSpec = tween(500),
     )
-    val paint = Paint().apply {
+    val stepPaint = Paint().apply {
         textAlign = Paint.Align.CENTER
         textSize = 40f
         color = if (isComplete) Color.White.toArgb() else secondaryDisabledColor.toArgb()
     }
+    val titlePaint = Paint().apply {
+        textAlign = Paint.Align.CENTER
+        textSize = 20f
+        color = secondaryDisabledColor.toArgb()
+    }
+
+
+
     Box(modifier = modifier) {
         // Line
         if (step > 1) {
@@ -81,7 +92,7 @@ fun Step(step: Int, modifier: Modifier = Modifier, isComplete: Boolean, isCurren
         Canvas(
             modifier = Modifier
                 .size(25.dp)
-                .align(Alignment.CenterEnd)
+                .align(CenterEnd)
                 .border(
                     shape = CircleShape,
                     width = 4.dp,
@@ -95,9 +106,20 @@ fun Step(step: Int, modifier: Modifier = Modifier, isComplete: Boolean, isCurren
                     "$step",
                     center.x,
                     center.y + 13,
-                    paint
+                    stepPaint
+                )
+                drawContext.canvas.nativeCanvas.drawText(
+                    "Booking Process",
+                    center.x + 20,
+                    center.y + 60,
+                    titlePaint
                 )
             }
         )
+
+//
     }
 }
+
+
+
