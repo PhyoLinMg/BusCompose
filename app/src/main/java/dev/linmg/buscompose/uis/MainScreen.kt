@@ -68,7 +68,7 @@ fun MainScreen(viewModel: MainViewModel = viewModel()) {
         }
     }
 }
-
+//TODO: Each step must have each viewmodel so that it will be handled neatly.
 @Composable
 fun Step1(viewModel: MainViewModel, state: StepperState.StepOneState) {
     val stepOneData = state.stepOne ?: StepOne("", "")
