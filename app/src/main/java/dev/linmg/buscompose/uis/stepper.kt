@@ -40,11 +40,9 @@ fun Stepper(modifier: Modifier = Modifier, numberOfSteps: Int, currentStep: Int)
                 isComplete = step < (currentStep + 1),
                 isCurrent = step == (currentStep + 1)
             )
-
-
         }
         Divider(
-            color = if (currentStep == numberOfSteps) cdgDark else cdgLightGrey,
+            color = cdgLightGrey,
             thickness = 4.dp,
             modifier = Modifier.width(20.dp),
         )
