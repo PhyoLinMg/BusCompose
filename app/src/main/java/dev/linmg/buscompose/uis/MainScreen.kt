@@ -4,6 +4,8 @@ import Stepper
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.items
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
@@ -76,7 +78,19 @@ fun Step1(viewModel: MainViewModel, state: StepperState.StepOneState) {
         horizontalAlignment = Alignment.Start,
         verticalArrangement = Arrangement.Center
     ) {
-        CartItemUi(CartModel(1, "name", price = 1.0), onPlusClick = {}, onMinusClick = {})
+        //just for the ui purpose...
+        // for handling increase and decrease cases, we should use viewmodel states and events
+        LazyColumn {
+            items(list) { cart ->
+                CartItemUi(cartModel = cart, onPlusClick = {
+                    cart.count = cart.count + 1
+                }, onMinusClick = {
+                    cart.count = cart.count - 1
+                })
+
+
+            }
+        }
         TextField(
             value = text,
             onValueChange = { newText ->
