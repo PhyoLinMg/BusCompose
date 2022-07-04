@@ -8,6 +8,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.tooling.preview.Preview
 import dev.linmg.buscompose.ui.theme.BusComposeTheme
 import dev.linmg.buscompose.uis.MainScreen
+import dev.linmg.buscompose.uis.home.HomeScreen
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -15,7 +16,8 @@ class MainActivity : ComponentActivity() {
         setContent {
             BusComposeTheme {
                 // A surface container using the 'background' color from the theme
-                MainScreen()
+//                MainScreen()
+                HomeScreen()
             }
         }
     }
